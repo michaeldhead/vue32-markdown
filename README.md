@@ -10,6 +10,8 @@ The biggest issue is the Code Block highlighting. There are several articles abo
 - [marked.js](https://marked.js.org/)
 - [Prismjs](https://prismjs.com/)
 
+## Live Demo
+[Live demo](https://blog.theheadfamily.com/blog/blog3)
 
 ### To install the required items:
 ```js
