@@ -7,6 +7,11 @@
   import "prismjs/plugins/line-numbers/prism-line-numbers.js";
   import "prismjs/plugins/line-numbers/prism-line-numbers.css";
   
+  import "prismjs/plugins/toolbar/prism-toolbar.js"; // required for the following plugins
+  import "prismjs/plugins/toolbar/prism-toolbar.css"; // required for the following plugins
+  import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.js"; // show copy button
+  import "prismjs/plugins/show-language/prism-show-language.js"; // display the language of the code block
+
   // This is needed if you have a conflict with other loaded CSS imports (i.e. Bulma).
   import "prismjs/plugins/custom-class/prism-custom-class";
   prism.plugins.customClass.map({ number: "prism-number", tag: "prism-tag" });

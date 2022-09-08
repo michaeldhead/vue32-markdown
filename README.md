@@ -1,4 +1,4 @@
-# Markdown with Code Block Highlighting in Vue
+# Markdown With Code Block Highlighting in Vue
 
 There are quite a few articles about markdown files and how useful they can be for a website. For example, the "Release Notes" will be written by someone who does not know HTML but needs to be on the website. Markdown language can do that because markdown allows someone to create a document that can get converted to HTML seamlessly.
 
@@ -62,6 +62,15 @@ import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 <!-- Change the above to Add numbering to the Code Blocks -->
 	<div class="line-numbers language-markup" v-html="mdToHtml"></div>
 ```
+
+### Add Copy and Show Language
+```js
+import "prismjs/plugins/toolbar/prism-toolbar.js"; // required for the following plugins
+import "prismjs/plugins/toolbar/prism-toolbar.css"; // required for the following plugins
+import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.js"; // show copy button
+import "prismjs/plugins/show-language/prism-show-language.js"; // display the language of the code block
+
+```
 See the [prismjs.com plugins](https://prismjs.com/index.html#plugins) here.
 
 
@@ -104,6 +113,11 @@ import prism from "prismjs";
 // Add numbering to the Code blocks
 import "prismjs/plugins/line-numbers/prism-line-numbers.js";
 import "prismjs/plugins/line-numbers/prism-line-numbers.css";
+
+import "prismjs/plugins/toolbar/prism-toolbar.js"; // required for the following plugins
+import "prismjs/plugins/toolbar/prism-toolbar.css"; // required for the following plugins
+import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.js"; // show copy button
+import "prismjs/plugins/show-language/prism-show-language.js"; // display the language of the code block
 
 // This is needed for a conflict with other CSS files being used (i.e. Bulma).
 import "prismjs/plugins/custom-class/prism-custom-class";
