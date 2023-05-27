@@ -1,17 +1,26 @@
 # Markdown With Code Block Highlighting in Vue
 
-There are quite a few articles about markdown files and how useful they can be for a website. For example, the "Release Notes" will be written by someone who does not know HTML but needs to be on the website. Markdown language can do that because markdown allows someone to create a document that can get converted to HTML seamlessly.
+## What is Markdown?
+Markdown is a **markup language** that is designed to be easy for non-technical people to read and write. It is used to format text in a way that is both simple and easy-to-use. Markdown was created with the goal of being appealing to human readers in its source code form. It is widely used in blogging, online forums, documentation pages, and readme files. In the easiest terms, Markdown is used to add formatting elements to plain text documents. Anyone can use Markdown to create a document, as it is designed to be easy to read and write, even for those with no prior experience with markup languages,
 
-The issue now comes down to "How can we do that in Vue?" The answer is `marked.js` and `prismjs`
 
-The biggest issue is the Code Block highlighting. There are several articles about integrating `marked.js` into Vue. But the highlighting of the Code Block is a different story. Hopefully we can solve that issue.
+To use Markdown, you need to create a Markdown file using a text editor or a dedicated Markdown application with an `.md` or `.markdown` extension. Then, you can use a Markdown application to convert the Markdown file to an HTML document. There are many resources available online to help you get started with Markdown, including tutorials and reference guides. I mainly use [Ghostwriter](https://ghostwriter.kde.org/) for my Markdown writting.
 
-### More information can be found here:
-- [marked.js](https://marked.js.org/)
-- [Prismjs](https://prismjs.com/)
+To create a simple document using Markdown, you can follow these steps:
 
-## Live Demo
-[Live demo](https://blog.theheadfamily.com/blog/blog3)
+1. Open a text editor or a dedicated Markdown application.
+2. Start writing your document using plain text.
+3. Add Markdown syntax to the text to indicate which words and phrases should look different. For example, to denote a heading, you add a number sign before it (e.g., `# Heading One`). Or to make a phrase bold, you add two asterisks before and after it (e.g., `**this text is bold**`).
+4. Save your file with an `.md` or `.markdown` extension.
+
+Markdown provides a wide range of formatting options to help you structure and style your text. These are just a few examples of the formatting options available in Markdown. There are many more options available, including creating tables, adding code blocks, and using blockquotes.
+
+You can then use a Markdown application to convert the Markdown file to an HTML document. We will be using [marked.js](https://marked.js.org/) for the conversion to HTML.
+
+The biggest issue in displaying the Mardown is when you want to show a Code Block or Code Snippet. Code Block highlighting is done by a syntax highlighter. There are several articles about integrating marked.js into Vue. But the highlighting of the Code Block is a different story. For the Highlighting, we will be using [Prismjs](https://prismjs.com/).
+
+The issue now comes down to "How can we do all of this in Vue?" Hopefully we can solve that issue with an answer using `marked.js` and `prismjs`
+
 
 ### To install the required items:
 ```js
@@ -20,26 +29,34 @@ npm install prismjs
 ```
 
 ## Minimum Items Needed
+We will start with the minimum itemns need to read in the Markdown test and display it with the proper Code Block highlighter. So let's get started.
+
+We need to import the engine that will convert the Markdown text and convert it to HTML
 ```js
 // Takes the markdown file and creates an HTML output
 import { marked } from "marked"; 
 ```
+We now need to import the Syntax Highligher for the Code Blocks
 ```js
-// To highlight the Code Block created in the markdown
+// Needed to highlight the Code Block created in the markdown
 import prism from "prismjs";
 ```
+We need to tell `prismjs` what Language to use to highlight. i.e. `javascript` or `js`, `csharp` or `cs`, `json`.
 ```js
 // Marked options. See https://marked.js.org/using_advanced#options for more information
 return prism.highlight(code, prism.languages[lang], lang);
 ```
+Apply the Syntax 
 ```js
 // apply the highlight syntax to the Code Block
 prism.highlightAll();
 ```
+Use the Markdown text in the HTML page
 ```js
 // use the markdown in the Vue template
 marked.parse(markDown.value);
 ```
+Use a predefined CSS style to the Code Block
 ```js
 // a style to apply to the Code Block
 @import "prismjs/themes/prism-coy.css"; 
@@ -76,7 +93,6 @@ import "prismjs/plugins/show-language/prism-show-language.js"; // display the la
 See the [prismjs.com plugins](https://prismjs.com/index.html#plugins) here.
 
 
-
 ### Change marked Options
 ```js
 marked.use({
@@ -105,6 +121,8 @@ See [marked Options](https://marked.js.org/using_advanced#options) for more info
 See [https://prismjs.com/](https://prismjs.com/) for more information
 
 ## The whole solution
+Now let's put it all together using Vue 3.
+
 `App.vue`
 ```js
 <script setup>
@@ -172,3 +190,11 @@ getMarkdownData();
 @import "prismjs/themes/prism-coy.css";
 </style>
 ```
+
+### More information can be found here:
+- [marked.js](https://marked.js.org/)
+- [Prismjs](https://prismjs.com/)
+- [Ghostwriter](https://ghostwriter.kde.org/)
+
+## Live Demo
+[Live demo](https://blog.theheadfamily.com/blog/blog3)
