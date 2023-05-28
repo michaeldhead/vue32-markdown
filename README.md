@@ -1,10 +1,10 @@
-# Markdown With Code Block Highlighting in Vue
+# Using Markdown Highlighting in Vue
 
 ## What is Markdown?
-Markdown is a **markup language** that is designed to be easy for non-technical people to read and write. It is used to format text in a way that is both simple and easy-to-use. Markdown was created with the goal of being appealing to human readers in its source code form. It is widely used in blogging, online forums, documentation pages, and readme files. In the easiest terms, Markdown is used to add formatting elements to plain text documents. Anyone can use Markdown to create a document, as it is designed to be easy to read and write, even for those with no prior experience with markup languages,
+Markdown is a **markup language** that is designed to be easy for non-technical people to read and write. It is used to format text in a way that is both simple and easy-to-use. Markdown was created with the goal of being appealing to human readers in its source code form. It is widely used in blogging, online forums, documentation pages, and readme files. In the easiest terms, Markdown is used to add formatting elements to plain text documents. Anyone can use Markdown to create a document, even those with no prior experience with markup languages.
 
-
-To use Markdown, you need to create a Markdown file using a text editor or a dedicated Markdown application with an `.md` or `.markdown` extension. Then, you can use a Markdown application to convert the Markdown file to an HTML document. There are many resources available online to help you get started with Markdown, including tutorials and reference guides. I mainly use [Ghostwriter](https://ghostwriter.kde.org/) for my Markdown writting.
+## How do you create a Markdown document?
+First, you will need to create a Markdown file using a text editor or a dedicated Markdown application with an `.md` or `.markdown` extension. Then, you can use a Markdown application to convert the Markdown file to an HTML document. There are many resources available online to help you get started with Markdown, including tutorials and reference guides. I mainly use [Ghostwriter](https://ghostwriter.kde.org/) for my Markdown writting.
 
 To create a simple document using Markdown, you can follow these steps:
 
@@ -15,12 +15,14 @@ To create a simple document using Markdown, you can follow these steps:
 
 Markdown provides a wide range of formatting options to help you structure and style your text. These are just a few examples of the formatting options available in Markdown. There are many more options available, including creating tables, adding code blocks, and using blockquotes.
 
-You can then use a Markdown application to convert the Markdown file to an HTML document. We will be using [marked.js](https://marked.js.org/) for the conversion to HTML.
+## Using the Markdown document
+We will need to use a Markdown application to convert the Markdown file to an HTML document. We will be using [marked.js](https://marked.js.org/) for the conversion to HTML and displaying it in our Vue application.
 
-The biggest issue in displaying the Mardown is when you want to show a Code Block or Code Snippet. Code Block highlighting is done by a syntax highlighter. There are several articles about integrating marked.js into Vue. But the highlighting of the Code Block is a different story. For the Highlighting, we will be using [Prismjs](https://prismjs.com/).
+## Syntax Highlighting
+The biggest issue in displaying the Markdown is when you want to show a Code Block or Code Snippet. Code Block highlighting is done by a syntax highlighter. There are several articles about integrating marked.js into Vue. But the highlighting of the Code Block is a different story. This is where we will use another tool for the Highlighting. For this, we will be using [Prismjs](https://prismjs.com/).
 
-The issue now comes down to "How can we do all of this in Vue?" Hopefully we can solve that issue with an answer using `marked.js` and `prismjs`
-
+## How can we do all of this in Vue?
+Hopefully we can solve that issue with by using `marked.js` and `prismjs`. Let's start by taking a look at the basic parts needed to view a Markdown document in a Vue 3 application.
 
 ### To install the required items:
 ```js
@@ -28,10 +30,10 @@ npm install marked
 npm install prismjs
 ```
 
-## Minimum Items Needed
-We will start with the minimum itemns need to read in the Markdown test and display it with the proper Code Block highlighter. So let's get started.
+## Minimum Items Needed in the Vue file
+We will start with the minimum items need to read in the Markdown text and display it with the proper Code Block highlighter. So let's get started.
 
-We need to import the engine that will convert the Markdown text and convert it to HTML
+We need to import the engine that will read the Markdown text and convert it to HTML
 ```js
 // Takes the markdown file and creates an HTML output
 import { marked } from "marked"; 
